@@ -1,0 +1,143 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://www.abcd.com/schema.json",
+	"title": "Configuration Schema",
+	"description": "Configuration Schema",
+	"type": "object",
+	"required": [
+		"Properties",
+		"Components"
+	],
+	"properties": {
+		"Properties": {
+			"description": "Primary properties identifying the Configuration.",
+			"type": "object",
+			"required": [
+				"Configuration Name",
+				"Configuration Description",
+				"Configuration Version"
+			],
+			"properties": {
+				"Configuration Name": {
+					"description": "Name of the Configuration.",
+					"type": "string"
+				},
+				"Configuration Description": {
+					"description": "Description of the Configuration.",
+					"type": "string"
+				},
+				"Configuration Type": {
+					"description": "The Type used to categorise this Configuration.",
+					"type": "string",
+					"enum": [
+						"General",
+						"Complex"
+					],
+					"default": "General"
+				},
+				"Configuration Version": {
+					"description": "Version number of this Configuration, in the format 'major.minor.revision'.",
+					"type": "string"
+				},
+				"Configuration Author": {
+					"description": "Author of this Configuration.",
+					"type": "string"
+				},
+				"Helpdesk Number": {
+					"description": "Helpdesk number for this Configuration.",
+					"type": "string"
+				}
+			}
+		},
+		"Components": {
+			"description": "The Components in this Configuration.",
+			"type": "object",
+			"properties": {
+				"Native": {
+					"description": "Native Components",
+					"type": "array"
+					"items": {
+						"type": "object",
+						"required": [
+							"Name",
+							"ID",
+							"Connection"
+						],
+						"properties": {
+							"ID": {
+								"type": "string",
+								"description": "This is the ID by which other components of this Configuration will reference this Component."
+							},
+							"Disable": {
+								"type": "boolean",
+								"description": "If checked, this Component is disabled for this Configuration."
+							},
+							"Name": {
+								"type": "string"
+							},
+							"Connection": {
+								"type": "object",
+								"description": "The Connection Parameters for this Component",
+								"properties": {
+									"IPID": {
+										"type": "number",
+										"description": "The Component's IPID, in decimal.",
+										"maximum": 255,
+										"minimum": 3
+									},
+									"IP Address": {
+										"type": "string",
+										"description": "IP address or hostname of the Component."
+									}
+								}
+							}
+						}
+					}
+				},
+				"IP": {
+					"description": "Components controlled over IP",
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"type": "object",
+						"required": [
+							"Name",
+							"ID"
+						],
+						"properties": {
+							"ID": {
+								"type": "string",
+								"description": "This is the ID by which other components of this Configuration File will reference this Component."
+							},
+							"Disable": {
+								"type": "boolean",
+								"description": "If checked, this Component is disabled for this Configuration."
+							},
+							"Name": {
+								"type": "string"
+							},
+							"Model": {
+								"type": "string"
+							},
+							"Connection": {
+								"type": "object",
+								"description": "The Connection Parameters for this Component",
+								"properties": {
+									"IP Address": {
+										"type": "string",
+										"description": "IP address or hostname of the Component."
+									},
+									"IP Port": {
+										"type": "number",
+										"description": "IP Port for connecting to the Component"
+									}
+								}
+							}
+						}
+					}
+				}
+
+			}
+		}
+	}
+}
