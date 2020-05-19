@@ -68,10 +68,6 @@
 								"type": "string",
 								"description": "This is the ID by which other components of this Configuration will reference this Component."
 							},
-							"Disable": {
-								"type": "boolean",
-								"description": "If checked, this Component is disabled for this Configuration."
-							},
 							"Name": {
 								"type": "string"
 							},
@@ -108,10 +104,6 @@
 							"ID": {
 								"type": "string",
 								"description": "This is the ID by which other components of this Configuration File will reference this Component."
-							},
-							"Disable": {
-								"type": "boolean",
-								"description": "If checked, this Component is disabled for this Configuration."
 							},
 							"Name": {
 								"type": "string"
