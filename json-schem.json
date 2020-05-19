@@ -55,7 +55,7 @@
 			"properties": {
 				"Native": {
 					"description": "Native Components",
-					"type": "array"
+					"type": "array",
 					"items": {
 						"type": "object",
 						"required": [
